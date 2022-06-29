@@ -30,17 +30,18 @@ const images = [
 
 let imageActive = 0;
 const parent = document.querySelector(".carosello-container-img")
-images.forEach((image, index)=>{
-
-    console.log(image.url, image.title, image.description);
+images.forEach((image, index) => {
     const newSlide = document.createElement('div');
+
     newSlide.classList.add('d-none');
-    if (imageActive === index){
+
+    if (imageActive == index) {
         newSlide.classList.remove("d-none");
         newSlide.classList.add("active");
     }
+
     const newImg = document.createElement('img');
-    newImg.src =image.url;
+    newImg.src = image.url;
     const newTitle = document.createElement('h2');
     newTitle.innerHTML = image.title;
     const newDescription = document.createElement('p');
@@ -51,5 +52,15 @@ images.forEach((image, index)=>{
     newSlide.append(newDescription);
 
     parent.append(newSlide);
+})
 
+const btnNext = document.getElementById('btn-next');
+btnNext.addEventListener('click', function () {
+    console.log("click");
+    const imgAct = document.querySelector('.carosello-container-img div.active');
+    imgAct.classList.remove('active');
+    imgAct.classList.add('d-none');
+    imageActive++;
+    console.log(imageActive);
+    
 })
